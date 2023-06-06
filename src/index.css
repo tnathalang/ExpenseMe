@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --green: rgb(37, 236, 186);
   --blue: rgb(0, 127, 255);
 }
@@ -130,4 +130,4 @@ a {
 
 .fancy:hover > .outer:nth-child(12) {
   transform: translate(120%, -30%) rotate(-10deg);
-}
+} */

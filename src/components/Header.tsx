@@ -1,4 +1,5 @@
 import React from "react";
+import "./header.css";
 
 const Header: React.FunctionComponent = () => {
   const rand = (min: number, max: number): number =>
@@ -59,7 +60,7 @@ const Header: React.FunctionComponent = () => {
             id="work-link"
             href="https://www.potloc.com/"
             target="_blank"
-            className="word fancy"
+            className="fancy word"
           >
             @Potloc
           </a>
