@@ -1,10 +1,9 @@
-import Preloader from "./components/Preloader";
-import "./css/preloader.scss";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   return (
     <>
-      <Preloader />
+      <LandingPage />
     </>
   );
 }

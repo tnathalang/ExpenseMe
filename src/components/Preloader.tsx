@@ -3,9 +3,10 @@ import { gsap } from "gsap";
 import { Power4, Linear, Back } from "gsap/all";
 import imagesLoaded from "imagesloaded";
 
-import Beach from "../../public/IMG_3400.jpg";
-import Beach2 from "../../public/IMG_3071.jpg";
+// import Beach from "../../public/Beach1.jpg";
+import Beachgif from "../../public/Beachgif.gif";
 import "../css/preloader.scss";
+import Collection from "./Collection";
 
 const Preloader: React.FunctionComponent = () => {
   const loadedCountRef = useRef(0);
@@ -20,7 +21,7 @@ const Preloader: React.FunctionComponent = () => {
     gsap.to(progressTlRef.current, {
       progress: loadingProgressRef.current,
       ease: Linear.easeNone,
-      duration: 2,
+      duration: 0.2,
     });
   };
 
@@ -39,9 +40,9 @@ const Preloader: React.FunctionComponent = () => {
 
     preloaderOutTl
       .to(".loader-wrapper", {
-        duration: 1.2,
+        duration: 0.4,
         autoAlpha: 0,
-        ease: Back.easeInOut,
+        ease: Back.easeOut,
       })
       .set("body", { className: "-=is-loading" })
       .set("html", { className: "+=is-intro-leave" })
@@ -82,40 +83,10 @@ const Preloader: React.FunctionComponent = () => {
       <div id="intro" className="hero">
         <div className="container">
           <div className="hero-img">
-            <img className="js-img-load" src={Beach} />
+            <img className="js-img-load" src={Beachgif} />
           </div>
 
-          <div className="cols">
-            <div className="col col-left">
-              <div className="copy">
-                <div className="header">Website 2023</div>
-                <div className="sub-header">
-                  Building collection of portfolio websites
-                </div>
-                <div className="img-wrapper">
-                  <img src={Beach2} />
-                </div>
-                <div className="info">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit
-                  aspernatur debitis asperiores. Ea sunt eos, dolor nam cumque
-                  unde nemo itaque nihil temporibus laborum corporis, natus
-                  magnam libero fuga harum.
-                </div>
-                <div className="footer">
-                  <div className="footer-item">Brand new</div>
-                  <div className="footer-item">----------</div>
-                  <div className="footer-item">World</div>
-                </div>
-              </div>
-            </div>
-            <div className="col col-right">
-              <div className="header">
-                Trying <br />
-                New <br /> things <br />
-                trial 1
-              </div>
-            </div>
-          </div>
+          <Collection />
         </div>
         <div id="site-loader" className="loader">
           <div className="loader-wrapper">
@@ -124,7 +95,6 @@ const Preloader: React.FunctionComponent = () => {
               <span className="loader-progress" />
             </div>
           </div>
-          <div className="loader-overlay u-absolute u-pos-tl u-fit" />
         </div>
       </div>
     </>
