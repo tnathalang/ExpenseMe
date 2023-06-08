@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Beach2 from "../../public/IMG_3071.jpg";
+import Beach2 from "../../public/Beach2.jpg";
 import "../css/preloader.scss";
 import HeroText from "./HeroText";
 import { gsap } from "gsap";
@@ -7,18 +7,6 @@ import { gsap } from "gsap";
 const Collection: React.FunctionComponent = () => {
   const app = useRef<HTMLDivElement>(null);
   const tl = useRef<GSAPTimeline>();
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      tl.current = gsap.timeline().from(".cols", {
-        duration: 2,
-        height: "50vh",
-        ease: "power4.inOut",
-      });
-    }, app);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <div className="cols" ref={app}>

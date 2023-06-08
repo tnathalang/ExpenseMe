@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
-import "../css/siteLoader.scss";
-import Story from "./Story";
-import Collection from "./Collection";
+import "../css/landingPage.scss";
+import AboutPage from "./AboutPage";
 
 const LandingPage: React.FunctionComponent = () => {
   const app = useRef<HTMLDivElement>(null);
@@ -77,7 +76,7 @@ const LandingPage: React.FunctionComponent = () => {
   useEffect(() => {
     if (showStory) {
       gsap.from(storyRef.current, {
-        x: -100, // Slide in from the left
+        x: -100,
         opacity: 0,
         duration: 1,
         ease: "power2.out",
@@ -88,7 +87,7 @@ const LandingPage: React.FunctionComponent = () => {
   return (
     <>
       {!showStory && (
-        <div className="main" ref={app}>
+        <div className="main loading" ref={app}>
           <div className="loader">
             <div className="loader-clip clip-top">
               <div className="marquee">
@@ -128,9 +127,14 @@ const LandingPage: React.FunctionComponent = () => {
       )}
 
       {showStory && (
-        <div ref={storyRef}>
-          <Collection />
-        </div>
+        <>
+          <div ref={storyRef}>
+            {/* <MouseEffectWrapper>
+            </MouseEffectWrapper> */}
+            {/* <h1>hello</h1> */}
+            <AboutPage />
+          </div>
+        </>
       )}
     </>
   );
