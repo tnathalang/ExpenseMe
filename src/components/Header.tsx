@@ -1,46 +1,56 @@
-import React from "react";
-import "./header.css";
+import React, { useEffect, useRef } from "react";
+import "../css/header.scss";
 
 const Header: React.FunctionComponent = () => {
-  const rand = (min: number, max: number): number =>
-    Math.floor(Math.random() * (max - min + 1)) + min;
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const intervalRef = useRef<number | null>(null);
 
-  const enhance = (id: string): void => {
-    const element = document.getElementById(id);
-    const text = element?.innerText.split("");
+  useEffect(() => {
+    const handleMouseOver = (event: MouseEvent) => {
+      let iteration = 0;
 
-    if (element && text) {
-      element.innerText = "";
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+      }
 
-      text.forEach((value, index) => {
-        const outer = document.createElement("span");
+      intervalRef.current = window.setInterval(() => {
+        const target = event.target as HTMLHeadingElement;
+        target.innerText = target.innerText
+          .split("")
+          .map((letter: string, index: number) => {
+            if (index < iteration) {
+              return target.dataset.value?.[index];
+            }
 
-        outer.className = "outer";
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
 
-        const inner = document.createElement("span");
+        if (
+          target?.dataset?.value !== undefined &&
+          iteration >= target.dataset.value.length
+        ) {
+          if (intervalRef.current !== null) {
+            clearInterval(intervalRef.current);
+          }
+        }
 
-        inner.className = "inner";
+        iteration += 1 / 3;
+      }, 30);
+    };
 
-        inner.style.animationDelay = `${rand(-5000, 0)}ms`;
+    const headingElement = document.querySelector(
+      "a#work-link"
+    ) as HTMLAnchorElement;
+    headingElement?.addEventListener("mouseover", handleMouseOver);
 
-        const letter = document.createElement("span");
-
-        letter.className = "letter";
-
-        letter.innerText = value;
-
-        letter.style.animationDelay = `${index * 1000}ms`;
-
-        inner.appendChild(letter);
-
-        outer.appendChild(inner);
-
-        element.appendChild(outer);
-      });
-    }
-  };
-
-  enhance("work-link");
+    return () => {
+      headingElement?.removeEventListener("mouseover", handleMouseOver);
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -61,6 +71,7 @@ const Header: React.FunctionComponent = () => {
             href="https://www.potloc.com/"
             target="_blank"
             className="fancy word"
+            data-value="@Potloc"
           >
             @Potloc
           </a>

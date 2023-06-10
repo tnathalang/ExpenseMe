@@ -79,7 +79,7 @@ const LandingPage: React.FunctionComponent = () => {
         x: -100,
         opacity: 0,
         duration: 1,
-        ease: "power2.out",
+        ease: "power3.out",
       });
     }
   }, [showStory]);
@@ -129,9 +129,6 @@ const LandingPage: React.FunctionComponent = () => {
       {showStory && (
         <>
           <div ref={storyRef}>
-            {/* <MouseEffectWrapper>
-            </MouseEffectWrapper> */}
-            {/* <h1>hello</h1> */}
             <AboutPage />
           </div>
         </>

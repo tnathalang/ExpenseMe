@@ -1,0 +1,20 @@
+.line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.word {
+  color: black;
+  font-size: clamp(2rem, 8vw, 10rem);
+  margin: 3rem;
+  text-transform: uppercase;
+  transition: opacity 250ms ease;
+}
+
+a {
+  text-decoration: none;
+}
+
+#text:has(.fancy:hover) .word:not(.fancy:hover) {
+  opacity: 0.2;
+}

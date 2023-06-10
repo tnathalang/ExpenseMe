@@ -1,7 +1,10 @@
+$color: rgb(255, 245, 238);
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Cormorant Garamond";
 }
 
 .main {
@@ -23,16 +26,21 @@
   z-index: 10000;
 }
 
+.clip-top,
+.clip-bottom {
+  position: absolute;
+  width: 100vw;
+  height: 33.3vh;
+  clip-path: inset(0 0 0 0);
+  background: $color;
+}
+
 .clip-top {
   top: 0;
-  clip-path: inset(0 0 0 0);
-  background: lightblue;
 }
 
 .clip-bottom {
   bottom: 0;
-  clip-path: inset(0 0 0 0);
-  background: lightblue;
 }
 
 .clip-center {
@@ -59,19 +67,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Cormorant Garamond";
-}
-
-.container {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-  font-family: "Neue Montreal";
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  font-size: 14px;
 }
