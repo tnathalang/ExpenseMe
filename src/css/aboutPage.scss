@@ -44,7 +44,7 @@
   backdrop-filter: blur(12vmax);
 }
 
-.container.about-page {
+.container-about .about-page {
   position: absolute;
   top: 0;
   left: 0;
@@ -53,11 +53,7 @@
   backdrop-filter: none;
 }
 
-.container.about-page {
-  position: relative;
-}
-
-.container {
+.container-about {
   .hero {
     display: flex;
     height: 100vh;

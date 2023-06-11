@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
-import "../css/landingPage.scss";
 import AboutPage from "./AboutPage";
+import Preloader from "./Preloader";
+import createPreloadTimeline from "../animations/createPreloadTimeline";
+import NavScreen from "./NavScreen";
 
 const LandingPage: React.FunctionComponent = () => {
   const app = useRef<HTMLDivElement>(null);
@@ -12,63 +14,8 @@ const LandingPage: React.FunctionComponent = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      tl.current = gsap
-        .timeline()
-        .from(".clip-top, .clip-bottom", {
-          duration: 2,
-          height: "50vh",
-          ease: "power4.inOut",
-        })
-        .from(
-          ".clip-top .marquee, .clip-bottom .marquee",
-          {
-            duration: 5,
-            left: "100%",
-            ease: "power3.inOut",
-          },
-          "<"
-        )
-        .from(
-          ".clip-center .marquee",
-          {
-            duration: 5,
-            left: "-50%",
-            ease: "power3.inOut",
-          },
-          "<"
-        )
-        .to(
-          ".marquee",
-          {
-            duration: 3.5,
-            top: "50%",
-            ease: "power4.inOut",
-          },
-          "<"
-        )
-        .to(
-          ".clip-top",
-          {
-            duration: 2,
-            delay: 3,
-            clipPath: "inset(0 0 100% 0)",
-            ease: "power4.inOut",
-          },
-          "<"
-        )
-        .to(
-          ".clip-bottom",
-          {
-            duration: 2,
-            clipPath: "inset(100% 0 0 0)",
-            ease: "power4.inOut",
-          },
-          "<"
-        )
-        .call(() => {
-          setShowStory(true);
-        });
-    }, app);
+      tl.current = createPreloadTimeline(setShowStory);
+    });
 
     return () => ctx.revert();
   }, []);
@@ -88,48 +35,14 @@ const LandingPage: React.FunctionComponent = () => {
     <>
       {!showStory && (
         <div className="main loading" ref={app}>
-          <div className="loader">
-            <div className="loader-clip clip-top">
-              <div className="marquee">
-                <div className="marquee-container">
-                  <span>Hello</span>
-                  <span>Hello</span>
-                  Hello
-                  <span>Hello</span>
-                  <span>Hello</span>
-                </div>
-              </div>
-            </div>
-            <div className="loader-clip clip-bottom">
-              <div className="marquee">
-                <div className="marquee-container">
-                  <span>Hello</span>
-                  <span>Hello</span>
-                  Hello
-                  <span>Hello</span>
-                  <span>Hello</span>
-                </div>
-              </div>
-            </div>
-            <div className="clip-center">
-              <div className="marquee">
-                <div className="marquee-container">
-                  <span>Hello</span>
-                  <span>Hello</span>
-                  Hello
-                  <span>Hello</span>
-                  <span>Hello</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Preloader />
         </div>
       )}
 
       {showStory && (
         <>
           <div ref={storyRef}>
-            <AboutPage />
+            <NavScreen />
           </div>
         </>
       )}

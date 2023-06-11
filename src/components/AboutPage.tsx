@@ -32,7 +32,7 @@ const AboutPage: React.FunctionComponent = () => {
 
   return (
     <>
-      <div className="container about-page">
+      <div className="container-about about-page">
         <div id="mouse-movement" ref={cursor} />
         <div id="blur">
           <div className="hero">
