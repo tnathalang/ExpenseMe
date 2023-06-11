@@ -61,8 +61,10 @@ const NavScreen: React.FunctionComponent = () => {
       setNavButtonActive((prevState) => !prevState);
       if (tl.current?.progress() === 1) {
         tl.current?.reverse();
+        document.documentElement.style.overflow = "visible";
       } else {
         tl.current?.play();
+        document.documentElement.style.overflow = "hidden";
       }
     };
 
