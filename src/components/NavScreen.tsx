@@ -6,7 +6,7 @@ import "../css/navScreen.scss";
 const NavScreen: React.FunctionComponent = () => {
   const app = useRef<HTMLDivElement>(null);
   const tl = useRef<GSAPTimeline>();
-  const [isNavOpen, setNavOpen] = useState(false);
+  const [navButtonActive, setNavButtonActive] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -56,18 +56,26 @@ const NavScreen: React.FunctionComponent = () => {
         .reverse();
     });
 
-    const openNav = () => {
-      const navBtn = document.getElementById("menu-toggle-btn") as HTMLElement;
-
-      navBtn.onclick = () => {
-        navBtn.classList.toggle("active");
-        setNavOpen((prevOpen) => !prevOpen);
-      };
+    const toggleNav = () => {
+      setNavButtonActive((prevState) => !prevState);
+      if (tl.current?.progress() === 1) {
+        tl.current?.reverse();
+      } else {
+        tl.current?.play();
+      }
     };
 
-    openNav();
+    const navBtn = document.getElementById("menu-toggle-btn");
+    if (navBtn) {
+      navBtn.addEventListener("click", toggleNav);
+    }
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      if (navBtn) {
+        navBtn.removeEventListener("click", toggleNav);
+      }
+    };
   }, []);
 
   return (
@@ -76,7 +84,10 @@ const NavScreen: React.FunctionComponent = () => {
         <div className="navbar">
           <div className="site-logo">Plastic</div>
           <div className="menu-toggle">
-            <div id="menu-toggle-btn">
+            <div
+              id="menu-toggle-btn"
+              className={navButtonActive ? "active" : ""}
+            >
               <span></span>
             </div>
           </div>
@@ -85,6 +96,7 @@ const NavScreen: React.FunctionComponent = () => {
           We Transform ideas <br />
           into digital <br /> outcomes
         </div>
+
         <div className="nav-container">
           <div className="nav">
             <div className="col flex">
@@ -124,6 +136,7 @@ const NavScreen: React.FunctionComponent = () => {
               </div>
             </div>
           </div>
+
           <div className="nav-footer">
             <div className="links">
               <a href="#">Privacy policy</a>

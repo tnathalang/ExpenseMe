@@ -44,7 +44,6 @@ const AboutPage: React.FunctionComponent = () => {
           <div className="section-0">
             <p>Nothing ventured,</p>
             <p>nothing gained.</p>
-
             <cite>— Japanese proverb</cite>
           </div>
           <div className="section-1">

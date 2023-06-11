@@ -60,20 +60,21 @@ const Header: React.FunctionComponent = () => {
           <p className="word">Na</p>
         </div>
         <div className="line">
-          <p className="fancy word">Fullstack</p>
+          <p className="word">Fullstack</p>
         </div>
         <div className="line">
           <p className="word">Developer</p>
         </div>
         <div className="line">
+          <p className="word">@</p>
           <a
             id="work-link"
             href="https://www.potloc.com/"
             target="_blank"
             className="fancy word"
-            data-value="@Potloc"
+            data-value="Potloc"
           >
-            @Potloc
+            Potloc
           </a>
         </div>
       </div>

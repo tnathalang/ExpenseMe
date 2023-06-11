@@ -1,9 +1,11 @@
 import LandingPage from "./components/LandingPage";
+import NavScreen from "./components/NavScreen";
 
 function App() {
   return (
     <>
-      <LandingPage />
+      <NavScreen />
+      {/* <LandingPage /> */}
     </>
   );
 }
