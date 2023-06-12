@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
-import AboutPage from "./AboutPage";
 import Preloader from "./Preloader";
 import createPreloadTimeline from "../animations/createPreloadTimeline";
 import NavScreen from "./NavScreen";

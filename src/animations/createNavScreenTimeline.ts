@@ -1,13 +1,13 @@
-import { gsap } from "gsap";
+import gsap from "gsap";
 
-const createNavigationTimelineAnimation = (): GSAPTimeline => {
-  const timeline = gsap
-    .timeline({ paused: true })
-    .to(".nav-container", {
-      duration: 0.2,
-      autoAlpha: 1,
-      delay: 0.1,
-    })
+export const createNavScreenTimeline = () => {
+  const tl = gsap.timeline({ paused: true });
+
+  tl.to(".nav-container", {
+    duration: 0.2,
+    autoAlpha: 1,
+    delay: 0.1,
+  })
     .to(
       ".site-logo",
       {
@@ -46,7 +46,5 @@ const createNavigationTimelineAnimation = (): GSAPTimeline => {
     )
     .reverse();
 
-  return timeline;
+  return tl;
 };
-
-export default createNavigationTimelineAnimation;

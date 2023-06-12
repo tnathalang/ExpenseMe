@@ -36,7 +36,9 @@ const AboutPage: React.FunctionComponent = () => {
         <div id="mouse-movement" ref={cursor} />
         <div id="blur">
           <div className="hero">
-            <Header />
+            <div>
+              <Header />
+            </div>
             <div className="image-wrapper">
               <img src={beachGif} alt="" />
             </div>
