@@ -39,9 +39,7 @@ const Header: React.FunctionComponent = () => {
       }, 30);
     };
 
-    const headingElement = document.querySelector(
-      "a#work-link"
-    ) as HTMLAnchorElement;
+    const headingElement = document.querySelector("p#job") as HTMLAnchorElement;
     headingElement?.addEventListener("mouseover", handleMouseOver);
 
     return () => {
@@ -63,18 +61,13 @@ const Header: React.FunctionComponent = () => {
           <p className="word">Fullstack</p>
         </div>
         <div className="line">
-          <p className="word">Developer</p>
+          <p className="fancy word" id="job" data-value="Developer">
+            Developer
+          </p>
         </div>
         <div className="line">
-          <p className="word">@</p>
-          <a
-            id="work-link"
-            href="https://www.potloc.com/"
-            target="_blank"
-            className="fancy word"
-            data-value="Potloc"
-          >
-            Potloc
+          <a href="https://www.potloc.com/" target="_blank" className="word">
+            @Potloc
           </a>
         </div>
       </div>

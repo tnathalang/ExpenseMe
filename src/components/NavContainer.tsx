@@ -13,7 +13,7 @@ const NavContainer: React.FunctionComponent = () => {
             <a href="#">LinkedIn</a>
           </div>
         </div>
-        <div className="col">
+        <div>
           <div className="nav-link">
             <a href="#">Work</a>
             <div className="nav-item-wrapper"></div>
@@ -30,7 +30,7 @@ const NavContainer: React.FunctionComponent = () => {
       </div>
 
       <div className="nav-footer">
-        <div className="legal">
+        <div>
           <h5>Made with a lot of coffee in 2023</h5>
         </div>
         <div className="contact">
