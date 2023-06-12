@@ -6,14 +6,11 @@ const NavContainer: React.FunctionComponent = () => {
   return (
     <>
       <div className="nav">
-        <div className="col flex">
-          <div className="nav-logo">c/</div>
+        <div>
           <div className="nav-socials">
-            <a href="#">Behance</a>
-            <a href="#">Twitter</a>
+            <a href="#">Github</a>
             <a href="#">Instagram</a>
             <a href="#">LinkedIn</a>
-            <a href="#">Medium</a>
           </div>
         </div>
         <div className="col">
